@@ -15,6 +15,15 @@ export class PhotoService {
     return await this.photoRepository.find();
   }
 
+  async delete(id): Promise<any> {
+    try {
+      const result = await this.photoRepository.delete(id);
+      return result;
+    } catch(e) {
+      console.log(e.message);
+    }
+  }
+
   async findOne(id): Promise<any> {
     try {
       const result = await this.photoRepository.findOne(id);

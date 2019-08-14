@@ -37,4 +37,10 @@ export class PhotoController {
     const photo = await this.photoService.updatePhoto(id, body);
     res.status(HttpStatus.OK).json(photo);
   }
+
+  @Get('delete/:id')
+  async deletePhoto(@Param('id') id, @Res() res){
+    const photo = await this.photoService.delete(id);
+    res.status(HttpStatus.OK).json(photo);
+  }
 }
