@@ -1,23 +1,13 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PhotoModule } from './photo/photo.module';
-
+// import { PhotoModule } from './photo/photo.module';
+import { CatsModule } from './cat/cats.module'
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'nestsqldb',
-      entities: [join(__dirname, '**/**.entity{.ts,.js}')],
-      synchronize: true,
-    }),
-    PhotoModule
+    CatsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
